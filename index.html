@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcolatore di Voltaggio</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 800px;
+            display: flex;
+            justify-content: space-between;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #4CAF50;
+            text-align: center;
+            width: 100%;
+        }
+        .calcolo {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 15px;
+            background-color: #fafafa;
+            width: 30%;
+            box-sizing: border-box;
+            margin: 0 10px;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            transition: border-color 0.3s;
+        }
+        input:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            margin-bottom: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        h2 {
+            margin-top: 10px;
+            font-size: 20px;
+            color: #4CAF50;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Calcolatore di Voltaggio</h1>
+
+        <div class="calcolo">
+            <h2>Calcola Voltaggio</h2>
+            <label for="intensita">Intensità (I in Ampere):</label>
+            <input type="number" id="intensita" required>
+            
+            <label for="resistenza">Resistenza (R in Ohm):</label>
+            <input type="number" id="resistenza" required>
+            
+            <button onclick="calcolaVoltaggio()">Calcola Voltaggio</button>
+            <h2 id="risultato-voltaggio"></h2>
+        </div>
+
+        <div class="calcolo">
+            <h2>Calcola Intensità</h2>
+            <label for="voltaggio-intensita">Voltaggio (V in Volt):</label>
+            <input type="number" id="voltaggio-intensita" required>
+            
+            <label for="resistenza-intensita">Resistenza (R in Ohm):</label>
+            <input type="number" id="resistenza-intensita" required>
+            
+            <button onclick="calcolaIntensita()">Calcola Intensità</button>
+            <h2 id="risultato-intensita"></h2>
+        </div>
+
+        <div class="calcolo">
+            <h2>Calcola Resistenza</h2>
+            <label for="voltaggio-resistenza">Voltaggio (V in Volt):</label>
+            <input type="number" id="voltaggio-resistenza" required>
+            
+            <label for="intensita-resistenza">Intensità (I in Ampere):</label>
+            <input type="number" id="intensita-resistenza" required>
+            
+            <button onclick="calcolaResistenza()">Calcola Resistenza</button>
+            <h2 id="risultato-resistenza"></h2>
+        </div>
+    </div>
+
+    <script>
+        function calcolaVoltaggio() {
+            const intensita = parseFloat(document.getElementById('intensita').value);
+            const resistenza = parseFloat(document.getElementById('resistenza').value);
+            
+            if (isNaN(intensita) || isNaN(resistenza)) {
+                document.getElementById('risultato-voltaggio').innerText = 'Inserisci valori validi.';
+                return;
+            }
+            
+            const voltaggio = intensita * resistenza;
+            document.getElementById('risultato-voltaggio').innerText = `Voltaggio (V): ${voltaggio} Volt`;
+        }
+
+        function calcolaIntensita() {
+            const voltaggio = parseFloat(document.getElementById('voltaggio-intensita').value);
+            const resistenza = parseFloat(document.getElementById('resistenza-intensita').value);
+            
+            if (isNaN(voltaggio) || isNaN(resistenza) || resistenza === 0) {
+                document.getElementById('risultato-intensita').innerText = 'Inserisci valori validi.';
+                return;
+            }
+            
+            const intensita = voltaggio / resistenza;
+            document.getElementById('risultato-intensita').innerText = `Intensità (I): ${intensita} Ampere`;
+        }
+
+        function calcolaResistenza() {
+            const voltaggio = parseFloat(document.getElementById('voltaggio-resistenza').value);
+            const intensita = parseFloat(document.getElementById('intensita-resistenza').value);
+            
+            if (isNaN(voltaggio) || isNaN(intensita) || intensita === 0) {
+                document.getElementById('risultato-resistenza').innerText = 'Inserisci valori validi.';
+                return;
+            }
+            
+            const resistenza = voltaggio / intensita;
+            document.getElementById('risultato-resistenza').innerText = `Resistenza (R): ${resistenza} Ohm`;
+        }
+    </script>
+
+</body>
+</html>
