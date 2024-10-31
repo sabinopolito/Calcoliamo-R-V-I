@@ -4,82 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calcoliamo di Voltaggio</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #e3f2fd; /* Colore di sfondo blu chiaro */
-            color: #0d47a1; /* Blu scuro per il testo */
-            display: flex;
-            justify-content: center;
-            align-items: flex-start; /* Cambiato a flex-start per allineare in alto */
-            height: 100vh;
-            margin: 0;
-            flex-direction: column;
-            padding-top: 20px; /* Spazio in alto */
-        }
-        .container {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-            width: 90%;
-            max-width: 800px;
-        }
-        h1 {
-            font-size: 30px;
-            margin-bottom: 20px;
-            color: #1976d2; /* Blu brillante per il titolo */
-            text-align: center;
-        }
-        .image-container {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .calcolo {
-            border: 1px solid #bbdefb; /* Bordo blu chiaro */
-            border-radius: 10px;
-            padding: 20px;
-            background-color: #e1f5fe; /* Blu molto chiaro per il contenuto */
-            margin: 10px 0;
-        }
-        label {
-            display: block;
-            margin: 10px 0 5px;
-            font-weight: bold;
-        }
-        input {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #90caf9; /* Bordo blu chiaro */
-            border-radius: 5px;
-            margin-bottom: 10px;
-            transition: border-color 0.3s;
-        }
-        input:focus {
-            border-color: #1e88e5; /* Blu brillante al focus */
-            outline: none;
-        }
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #1e88e5; /* Blu brillante per i pulsanti */
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s;
-        }
-        button:hover {
-            background-color: #1565c0; /* Blu scuro al passaggio del mouse */
-        }
-        h2 {
-            margin-top: 10px;
-            font-size: 22px;
-            color: #1976d2; /* Blu brillante per i sottotitoli */
-            text-align: center;
-        }
-    </style>
 </head>
 <body>
 
@@ -127,47 +51,6 @@
 
         </div>
     </div>
-
-    <script>
-        function calcolaVoltaggio() {
-            const intensita = parseFloat(document.getElementById('intensita').value);
-            const resistenza = parseFloat(document.getElementById('resistenza').value);
-            
-            if (isNaN(intensita) || isNaN(resistenza)) {
-                document.getElementById('risultato-voltaggio').innerText = 'Inserisci valori validi.';
-                return;
-            }
-            
-            const voltaggio = intensita * resistenza;
-            document.getElementById('risultato-voltaggio').innerText = `Voltaggio (V): ${voltaggio} Volt`;
-        }
-
-        function calcolaIntensita() {
-            const voltaggio = parseFloat(document.getElementById('voltaggio-intensita').value);
-            const resistenza = parseFloat(document.getElementById('resistenza-intensita').value);
-            
-            if (isNaN(voltaggio) || isNaN(resistenza) || resistenza === 0) {
-                document.getElementById('risultato-intensita').innerText = 'Inserisci valori validi.';
-                return;
-            }
-            
-            const intensita = voltaggio / resistenza;
-            document.getElementById('risultato-intensita').innerText = `Intensità (I): ${intensita} Ampere`;
-        }
-
-        function calcolaResistenza() {
-            const voltaggio = parseFloat(document.getElementById('voltaggio-resistenza').value);
-            const intensita = parseFloat(document.getElementById('intensita-resistenza').value);
-            
-            if (isNaN(voltaggio) || isNaN(intensita) || intensita === 0) {
-                document.getElementById('risultato-resistenza').innerText = 'Inserisci valori validi.';
-                return;
-            }
-            
-            const resistenza = voltaggio / intensita;
-            document.getElementById('risultato-resistenza').innerText = `Resistenza (R): ${resistenza} Ohm`;
-        }
-    </script>
 
 </body>
 </html>
